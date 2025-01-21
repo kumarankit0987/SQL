@@ -1,0 +1,23 @@
+CREATE TABLE wp_comments (
+    comment_ID BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+    comment_post_ID BIGINT(20) UNSIGNED NOT NULL DEFAULT 0,
+    comment_author TINYTEXT NOT NULL,
+    comment_author_email VARCHAR(100) NOT NULL,
+    comment_author_url VARCHAR(200) NOT NULL,
+    comment_author_IP VARCHAR(100) NOT NULL,
+    comment_date DATETIME NOT NULL,
+    comment_date_gmt DATETIME NOT NULL,
+    comment_content TEXT NOT NULL,
+    comment_karma INT(11) NOT NULL,
+    comment_approved VARCHAR(20) NOT NULL DEFAULT '1',
+    comment_agent VARCHAR(255) NOT NULL,
+    comment_type VARCHAR(20) NOT NULL,
+    comment_parent BIGINT(20) UNSIGNED NOT NULL DEFAULT 0,
+    user_id BIGINT(20) UNSIGNED NOT NULL DEFAULT 0,
+    PRIMARY KEY (comment_ID),
+    KEY comment_post_ID (comment_post_ID),
+    KEY comment_approved_date_gmt (comment_approved, comment_date_gmt),
+    KEY comment_date_gmt (comment_date_gmt),
+    KEY comment_parent (comment_parent),
+    KEY comment_author_email (comment_author_email(10))
+);
